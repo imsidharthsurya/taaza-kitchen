@@ -886,28 +886,29 @@ const restrauntData = [
         "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
     }
 ]
-const RestrauntCard = (props) => {
+const RestrauntCard = ({name,cuisines,avgRating,cloudinaryImageId}) => {
+    // const {name,cuisines,avgRating,cloudinaryImageId}=restaurant.info
     return (
         <div className="restraunt-card">
-            <img className="rest-pic" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${props.restaurant.info.cloudinaryImageId}`} alt="restaunt pic" />
-            <h3>{props.restaurant.info.name}</h3>
-            <h4>{props.restaurant.info.cuisines.join(", ")}</h4>
-            <h5>{props.restaurant.info.avgRating} star</h5>
+            <img className="rest-pic" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`} alt="restaunt pic" />
+            <h3>{name}</h3>
+            <h4>{cuisines.join(", ")}</h4>
+            <h5>{avgRating} star</h5>
         </div>
     )
 }
 const Body = () => {
     return (
         <div className="restraunt-data">
-            <RestrauntCard restaurant={restrauntData[0]}/>
-            <RestrauntCard restaurant={restrauntData[1]}/>
-            <RestrauntCard restaurant={restrauntData[2]}/>
-            <RestrauntCard restaurant={restrauntData[3]}/>
-            <RestrauntCard restaurant={restrauntData[4]}/>
-            <RestrauntCard restaurant={restrauntData[5]}/>
-            <RestrauntCard restaurant={restrauntData[6]}/>
-            <RestrauntCard restaurant={restrauntData[7]}/>
-            <RestrauntCard restaurant={restrauntData[8]}/>
+            <RestrauntCard {...restrauntData[0].info}/>
+            <RestrauntCard {...restrauntData[1].info}/>
+            <RestrauntCard {...restrauntData[2].info}/>
+            <RestrauntCard {...restrauntData[3].info}/>
+            <RestrauntCard {...restrauntData[4].info}/>
+            <RestrauntCard {...restrauntData[5].info}/>
+            <RestrauntCard {...restrauntData[6].info}/>
+            <RestrauntCard {...restrauntData[7].info}/>
+            <RestrauntCard {...restrauntData[8].info}/>
         </div>
     )
 }
