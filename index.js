@@ -19,13 +19,19 @@ const Header=()=>{
     )
 }
 
+const restrauntData={
+    name:"Sid Biryani",
+    cuisines:["Hyderabadi","kolkata Biryani"],
+    avg_rating:4.6,
+    img:"https://media.istockphoto.com/id/1345624336/photo/chicken-biriyani.jpg?s=1024x1024&w=is&k=20&c=bvTAMlq5A8Z5EhVjBn6D8eYOQS-rsuKmT9ToLkCc2Y4="
+}
 const RestrauntCard=()=>{
     return (
         <div className="restraunt-card">
-            <img className="rest-pic" src="https://media.istockphoto.com/id/1345624336/photo/chicken-biriyani.jpg?s=1024x1024&w=is&k=20&c=bvTAMlq5A8Z5EhVjBn6D8eYOQS-rsuKmT9ToLkCc2Y4=" alt="restaunt pic"/>
-            <h2>Sid Biryani</h2>
-            <h3>Hyderabadi, Kolkata Biryani</h3>
-            <h4>4.5 star</h4>
+            <img className="rest-pic" src={restrauntData.img} alt="restaunt pic"/>
+            <h3>{restrauntData.name}</h3>
+            <h4>{restrauntData.cuisines.join(", ")}</h4>
+            <h5>{restrauntData.avg_rating} star</h5>
         </div>
     )
 }
