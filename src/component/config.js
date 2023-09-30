@@ -1,27 +1,4 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-
-//header
-const Header = () => {
-    return (
-        <div className="title">
-            <div>
-                <img src="https://lh3.googleusercontent.com/p/AF1QipMMujwhEF_JRzw2n-zfzzMVpejVTLuy9FR2obrP=w1080-h608-p-no-v0" alt="logo" className="title-img" />
-            </div>
-            <div className="nav-bar">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-//Body & restraunt card
-const restrauntData = [
+export const restrauntData = [
     {
         "info": {
             "id": "345356",
@@ -886,45 +863,5 @@ const restrauntData = [
         "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
     }
 ]
-const RestrauntCard = ({name,cuisines,avgRating,cloudinaryImageId}) => {
-    // const {name,cuisines,avgRating,cloudinaryImageId}=restaurant.info
-    return (
-        <div className="restraunt-card">
-            <img className="rest-pic" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`} alt="restaunt pic" />
-            <h3>{name}</h3>
-            <h4>{cuisines.join(", ")}</h4>
-            <h5>{avgRating} star</h5>
-        </div>
-    )
-}
-const Body = () => {
-    return (
-        <div className="restraunt-data">
-            {
-                restrauntData.map((restraunt)=>{
-                    return <RestrauntCard {...restraunt.info} key={restraunt.info.id}/>
-                })
-            }
-        </div>
-    )
-}
 
-//Footer
-const Footer = () => {
-    return (
-        <center><p>All Copyrights reserved to @imsidharthsurya</p></center>
-    )
-}
-
-const AppLayout = () => {
-    return (
-        <>
-            <Header />
-            <Body />
-            <Footer />
-        </>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<AppLayout />)
+export const IMG_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
