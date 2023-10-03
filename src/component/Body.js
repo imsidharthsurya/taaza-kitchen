@@ -1,17 +1,34 @@
-import {restrauntData} from "./config"
+// import {restrauntData} from "./config"
 import RestrauntCard from "./RestrauntCard"
-import { useState } from "react"
+import { useState,useEffect } from "react"
+import NoRestrauntFound from "./NoRestrauntFound";
+import ShimmerUI from "./ShimmerUI";
 
-function filterData(searchText,restrauntList){
-    return restrauntData.filter((restraunt)=>{
-        return restraunt.info.name.includes(searchText);
+function filterData(searchText,allRestraunts){
+    return allRestraunts.filter((restraunt)=>{
+        return restraunt.info.name.toLowerCase().includes(searchText.toLowerCase());
     })
 }
 const Body = () => {
-    console.log("body component loaded")
     const[searchText,setSearchText]=useState("")
-    const[restrauntList,setRestrauntList]=useState(restrauntData)
-    return (
+    // const[restrauntList,setRestrauntList]=useState(restrauntData)
+    const [allRestraunts,setAllRestraunts]=useState([]);
+    const [filteredRestraunts,setFilteredRestraunts]=useState([]);
+
+    useEffect(()=>{
+        fetchData();
+    },[])
+    async function fetchData(){
+        const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4322123&lng=78.3963095&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const json=await data.json();
+        console.log("restraunt data inside useEffect is: ",json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants);
+        setAllRestraunts(json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants)
+        setFilteredRestraunts(json.data.cards[5].card.card.gridElements.infoWithStyle.restaurants)
+    }
+    console.log("body component rendered")
+
+    if(!allRestraunts)return null;
+    return (allRestraunts.length===0)?<ShimmerUI/>:(
         <>
             <div className="search-div">
                 <input type="text" placeholder="search" value={searchText} onChange={(e)=>{
@@ -19,14 +36,15 @@ const Body = () => {
                     setSearchText(e.target.value)
                 }}/>
                 <button className="search-btn" onClick={()=>{
-                    const finalData=filterData(searchText,restrauntList)
+                    const finalData=filterData(searchText,allRestraunts)
                     console.log("the final data after filter is: ",finalData)
-                    setRestrauntList(finalData)
+                    setFilteredRestraunts(finalData)
                 }}>Search</button>
             </div>
             <div className="restraunt-data">
                 {
-                    restrauntList.map((restraunt)=>{
+                    (filteredRestraunts.length===0)?<NoRestrauntFound/>:
+                    filteredRestraunts.map((restraunt)=>{
                         return <RestrauntCard {...restraunt.info} key={restraunt.info.id}/>
                     })
                 }
