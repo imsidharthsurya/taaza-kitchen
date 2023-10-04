@@ -1,5 +1,19 @@
+import { useState } from "react"
 const ShimmerUI=()=>{
+    const[searchText,setSearchText]=useState("")
     return (
+        <>
+         <div className="search-div">
+                <input type="text" placeholder="search" value={searchText} onChange={(e)=>{
+                    console.log(e.target.value)
+                    setSearchText(e.target.value)
+                }}/>
+                <button className="search-btn" onClick={()=>{
+                    const finalData=filterData(searchText,allRestraunts)
+                    console.log("the final data after filter is: ",finalData)
+                    setFilteredRestraunts(finalData)
+                }}>Search</button>
+            </div>
         <div className="restraunt-data">
             {
                 new Array(30).fill(1).map((ele,i)=>{
@@ -12,6 +26,7 @@ const ShimmerUI=()=>{
             
             }
         </div>
+        </>
     )
 }
 
