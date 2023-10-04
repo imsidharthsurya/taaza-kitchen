@@ -1,6 +1,8 @@
+import { useState } from "react";
 //header
 const Header = () => {
-    return (
+    const [isLogin,setIsLogin]=useState(false);
+    return (   
         <div className="title">
             <div>
                 <a href="/">
@@ -13,6 +15,9 @@ const Header = () => {
                     <li>About</li>
                     <li>Contact</li>
                     <li>Cart</li>
+                    <li><a href="#" onClick={()=>{
+                        setIsLogin(oldVal=>!oldVal)
+                    }}>{(isLogin)?"Login":"Logout"}</a></li>
                 </ul>
             </div>
         </div>
