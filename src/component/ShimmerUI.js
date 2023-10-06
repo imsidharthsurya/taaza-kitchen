@@ -18,9 +18,9 @@ const ShimmerUI=()=>{
             {
                 new Array(30).fill(1).map((ele,i)=>{
                     return (<div className="restraunt-card">
-                    <div className="shimmer-card"></div>
-                    <div className="second-shimmer"></div>
-                    <div className="third-shimmer"></div>
+                    <div className="shimmer-card" key={`${i}1`}></div>
+                    <div className="second-shimmer" key={`${i}2`}></div>
+                    <div className="third-shimmer" key={`${i}3`}></div>
                 </div>)
                 })
             

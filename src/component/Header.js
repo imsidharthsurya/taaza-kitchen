@@ -11,9 +11,9 @@ const Header = () => {
             </div>
             <div className="nav-bar">
                 <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                   <a href="/"> <li>Home</li></a>
+                    <a href="/about"><li>About</li></a>
+                    <a href="/contact"><li>Contact</li></a>
                     <li>Cart</li>
                     <li><a href="#" onClick={()=>{
                         setIsLogin(oldVal=>!oldVal)
