@@ -3,6 +3,7 @@ import RestrauntCard from "./RestrauntCard"
 import { useState,useEffect } from "react"
 import NoRestrauntFound from "./NoRestrauntFound";
 import ShimmerUI from "./ShimmerUI";
+import {Link} from "react-router-dom"
 
 function filterData(searchText,allRestraunts){
     return allRestraunts.filter((restraunt)=>{
@@ -45,7 +46,7 @@ const Body = () => {
                 {
                     (filteredRestraunts.length===0)?<NoRestrauntFound/>:
                     filteredRestraunts.map((restraunt)=>{
-                        return <RestrauntCard {...restraunt.info} key={restraunt.info.id}/>
+                        return <Link to={"/restraunt/"+restraunt.info.id}><RestrauntCard {...restraunt.info} key={restraunt.info.id}/></Link>
                     })
                 }
             </div>

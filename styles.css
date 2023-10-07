@@ -88,3 +88,9 @@ body{
 a{
     text-decoration: none;
 }
+.restraunt-img{
+    width: 300px;
+}
+.restraunt-details-div{
+    display: flex;
+}

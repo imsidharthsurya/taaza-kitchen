@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import Contact from "./component/Contact"
 import About from "./component/About"
 import Error from "./component/Error"
+import RestrauntDetails from "./component/RestrauntDetails"
 
 const AppLayout = () => {
     return (
@@ -26,17 +27,17 @@ const router=createBrowserRouter([
         children:[
             {
                 path:"/",
-                element:<Body/>,
-                errorElement:<Error/>
+                element:<Body/>
             },
             {
                 path:"/about",
-                element:<About/>,
-                errorElement:<Error/>
+                element:<About/>
             },{
                 path:"/contact",
-                element:<Contact/>,
-                errorElement:<Error/>
+                element:<Contact/>
+            },{
+                path:"/restraunt/:id",
+                element:<RestrauntDetails/>
             }
         ]
     }
